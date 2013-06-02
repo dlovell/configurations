@@ -80,11 +80,10 @@ terminate_vm() {
 set_up_password_login() {
     vmx="$1"
     root_password="$2"
-    echo $root_password
     vmrun -T player -gu root -gp $root_password runProgramInGuest "$vmx" \
 	/usr/bin/perl -i.bak -pe 's/^#\s+(Password.*)/\$1/' /etc/ssh/ssh_config
     vmrun -T player -gu root -gp $root_password runProgramInGuest "$vmx" \
-	/usr/sbin/invoke-rc.d ssh restart
+	/etc/init.d/ssh restart
 }
 
 set_up_ssh_keys() {
@@ -94,15 +93,20 @@ set_up_ssh_keys() {
     root_password="$3"
     command_base='echo \$@ >>'
     #
-    key_loc="/home/$user/.ssh/authorized_keys"
-    command="$command_base $key_loc"
-    vmrun -T player -gu root -gp $root_password runProgramInGuest "$vmx" /bin/mkdir /root/.ssh
+    ssh_loc="/home/$user/.ssh"
+    command="$command_base $ssh_loc/authorized_keys"
+    vmrun -T player -gu root -gp $root_password runProgramInGuest "$vmx" /bin/mkdir "$ssh_loc"
     vmrun -T player -gu root -gp $root_password runProgramInGuest "$vmx" \
 	/bin/bash -c "$command" -- $(cat ~/.ssh/id_rsa.pub)
-    key_loc="/root/.ssh/authorized_keys"
-    command="$command_base $key_loc"
+    #
+    ssh_loc="/root/.ssh"
+    command="$command_base $ssh_loc/authorized_keys"
+    vmrun -T player -gu root -gp $root_password runProgramInGuest "$vmx" /bin/mkdir "$ssh_loc"
     vmrun -T player -gu root -gp $root_password runProgramInGuest "$vmx" \
 	/bin/bash -c "$command" -- $(cat ~/.ssh/id_rsa.pub)
+    #
+    vmrun -T player -gu root -gp $root_password runProgramInGuest "$vmx" \
+	/etc/init.d/ssh restart
 }
 
 print_vm_ip_address() {
@@ -110,7 +114,6 @@ print_vm_ip_address() {
     vmx="$1"
     root_password="$2"
     vm_cmd="info-set guestinfo.ip \$(ifconfig eth0 | perl -ne 'print \$1 if m/inet.addr:(\S+)/')"
-    echo "vmx=$vmx"
     vmrun -T player -gu root -gp $root_password runProgramInGuest "$vmx" /usr/sbin/vmware-rpctool "$vm_cmd"
     VM_IP=$(vmrun -T player readVariable "$vmx" guestVar ip)
     echo "$VM_IP"
@@ -118,15 +121,15 @@ print_vm_ip_address() {
 
     
 if [[ ! -z $install_only ]]; then
-    echo only installing VMware components
+    echo ONLY installing VMware components
     install_vmware_components $VMwarePlayer $VMwareVIX
     exit
 elif [[ ! -z $start_only ]]; then
-    echo only starting "$VM"
+    echo ONLY starting "$VM"
     start_vm "$VM"
     exit
 elif [[ ! -z $terminate_only ]]; then
-    echo only terminating "$VM"
+    echo ONLY terminating "$VM"
     terminate_vm "$VM"
     exit
 elif [[ ! -z $address_only ]]; then
