@@ -130,7 +130,7 @@ elif [[ ! -z $terminate_only ]]; then
     terminate_vm "$VM"
     exit
 elif [[ ! -z $address_only ]]; then
-    print_vm_ip_address "$VM"
+    print_vm_ip_address "$VM" "$root_password"
     exit
 elif [[ ! -z $password_login_only ]]; then
     set_up_password_login "$VM" "$root_password"
