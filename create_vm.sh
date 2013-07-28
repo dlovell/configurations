@@ -155,8 +155,8 @@ fi
 start_vm "$VM"
 set_up_password_login "$VM" "$root_password"
 set_up_ssh_keys "$VM" "$user" "$root_password"
-echo export VM_IP=$("print_vm_ip_address $VM $root_password")
+echo export VM_IP=$(print_vm_ip_address "$VM" "$root_password")
  
 # enable bigdata user to install python pacakges
-VM_IP=$("print_vm_ip_address $VM $root_password")
+VM_IP=$(print_vm_ip_address "$VM" "$root_password")
 ssh -o StrictHostKeyChecking=no root@$VM_IP perl -pi.bak -e "'s/^bigdata ALL=\(ALL\) ALL.*/bigdata ALL=\(ALL:ALL\) NOPASSWD: ALL/'" /etc/sudoers
