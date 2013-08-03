@@ -26,9 +26,11 @@ apt-get install -y git
 # USER: bash configure_git.sh
 
 # pip, virtualenv, virtualenvwrapper
-apt-get install -y python-pip
-pip install virtualenv
-pip install virtualenvwrapper
+wget -O - https://raw.github.com/pypa/pip/master/contrib/get-pip.py | sudo python
+source ~/.bashrc
+pip install virtualenv==1.10
+pip install virtualenvwrapper==3.6
+
 # USER: bash configure_pip_and_virtualenv.sh
 
 # install vim, tmux
