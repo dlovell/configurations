@@ -15,7 +15,12 @@ apt-get install -y htop nmon sysstat
 apt-get install -y screen sshfs xclip
 
 # build tools
-# apt-get install -y g++ make
+apt-get install -y g++ make
+
+# ssh server
+apt-get install -y openssh-server
+sudo perl -i.bak -pe 's/^#\s+(Password.*)/$1/' /etc/ssh/ssh_config
+/etc/init.d/ssh restart
 
 # emacs setup
 apt-get install -y emacs23
