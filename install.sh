@@ -31,7 +31,7 @@ apt-get install -y git
 # USER: bash configure_git.sh
 
 # pip, virtualenv, virtualenvwrapper
-wget -O - https://raw.github.com/pypa/pip/master/contrib/get-pip.py | sudo python
+wget -O - https://raw.github.com/pypa/pip/master/contrib/get-pip.py | python
 source ~/.bashrc
 pip install virtualenv==1.10
 pip install virtualenvwrapper==3.6
