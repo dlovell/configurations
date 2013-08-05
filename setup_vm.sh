@@ -20,7 +20,6 @@ usage: $0 options
     -u      user=$user
     -w      user_password=$user_password
     -r      root_password=$root_password
-    -n      only install the vmware components
     -s      only start the VM and print its ip address
     -t      only suspend the VM
     -k      only set up ssh key login
@@ -33,7 +32,7 @@ exit
 
 
 #Process the arguments
-while getopts hv:z:i:nstkaep opt
+while getopts hi:u:w:r:stkaep opt
 do
     case "$opt" in
         h) usage;;
@@ -41,7 +40,6 @@ do
         u) user=$user;;
         w) user_password=$user_password;;
         r) root_password=$root_password;;
-	n) install_only="True";;
         s) start_only="True";;
         t) suspend_only="True";;
         k) ssh_keys_only="True";;
@@ -182,9 +180,9 @@ elif [[ ! -z $password_login_only ]]; then
 fi
 
 echo "starting vm $VMX"
-
 start_vm "$VMX"
 # set_up_password_login "$VMX"
+echo "setting up ssh key login"
 set_up_ssh_keys "$VMX"
 # give VM extra time to get an IP address
 sleep 5
