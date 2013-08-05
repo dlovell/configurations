@@ -8,6 +8,10 @@ if [[ "$USER" != "root" ]]; then
 fi
 
 
+# update
+apt-get update
+apt-get update
+
 # system monitoring tools
 apt-get install -y htop nmon sysstat
 
@@ -19,7 +23,9 @@ apt-get install -y g++ make
 
 # ssh server
 apt-get install -y openssh-server
-sudo perl -i.bak -pe 's/^#\s+(Password.*)/$1/' /etc/ssh/ssh_config
+if [[ -z $(grep ^Password /etc/ssh/ssh_config) ]]; then
+	sudo perl -i.bak -pe 's/^#\s+(Password.*)/$1/' /etc/ssh/ssh_config
+fi
 /etc/init.d/ssh restart
 
 # emacs setup
@@ -35,7 +41,6 @@ wget -O - https://raw.github.com/pypa/pip/master/contrib/get-pip.py | python
 source ~/.bashrc
 pip install virtualenv==1.10
 pip install virtualenvwrapper==3.6
-
 # USER: bash configure_pip_and_virtualenv.sh
 
 # install vim, tmux
@@ -43,5 +48,4 @@ apt-get install -y --force-yes vim-nox tmux
 # USER: bash configure_tmux_vim_slime_for_repl.sh
 
 # quant tools
-sudo apt-get build-dep -y python-numpy python-matplotlib
-# python-scipy?
+sudo apt-get build-dep -y python-numpy python-matplotlib python-scipy
