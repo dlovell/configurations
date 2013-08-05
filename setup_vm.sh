@@ -192,5 +192,4 @@ sleep 5
 # enable user to install python pacakges
 VM_IP=$(print_vm_ip_address "$VMX")
 ssh -o StrictHostKeyChecking=no root@$VM_IP ls
-# FIXME: modify for $user instead of hardcoded bigdata
-ssh root@$VM_IP perl -pi.bak -e "'s/^bigdata ALL=\(ALL\) ALL.*/bigdata ALL=\(ALL:ALL\) NOPASSWD: ALL/'" /etc/sudoers
+ssh root@$VM_IP perl -pi.bak -e "'s/^$user ALL=\(ALL\) ALL.*/$user ALL=\(ALL:ALL\) NOPASSWD: ALL/'" /etc/sudoers
