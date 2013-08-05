@@ -190,4 +190,9 @@ sleep 5
 # enable user to install python pacakges
 VM_IP=$(print_vm_ip_address "$VMX")
 ssh -o StrictHostKeyChecking=no root@$VM_IP ls
-ssh root@$VM_IP perl -pi.bak -e "'s/^$user ALL=\(ALL\) ALL.*/$user ALL=\(ALL:ALL\) NOPASSWD: ALL/'" /etc/sudoers
+has_user=$(ssh root@$VM_IP grep $user /etc/sudoers)
+if [[ -z $has_user ]]; then
+	ssh root@$VM_IP "echo \"$user ALL=(ALL:ALL) NOPASSWD: ALL\" >> /etc/sudoers"
+else
+	ssh root@$VM_IP perl -pi.bak -e "'s/^$user ALL=\(ALL\) ALL.*/$user ALL=\(ALL:ALL\) NOPASSWD: ALL/'" /etc/sudoers
+fi
