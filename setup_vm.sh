@@ -196,3 +196,13 @@ if [[ -z $has_user ]]; then
 else
 	ssh root@$VM_IP perl -pi.bak -e "'s/^$user ALL=\(ALL\) ALL.*/$user ALL=\(ALL:ALL\) NOPASSWD: ALL/'" /etc/sudoers
 fi
+
+# FIXME: should do these steps too
+# scp /opt/vm_tools/install.sh root@$VM_IP:/root/
+# ssh root@$VM_IP bash /root/install.sh
+# user=bigdata
+# ssh root@$VM_IP mkdir /opt/vm_tools
+# ssh root@$VM_IP chown $user /opt/vm_tools
+# scp -r /opt/vm_tools $user@$VM_IP:/opt/
+# ssh root@$VM_IP bash /opt/vm_tools/install.sh
+# ssh $user@$VM_IP “ls /opt/vm_tools/configure_*sh | xargs -n1 bash”
