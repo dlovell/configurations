@@ -141,7 +141,8 @@ set_up_ssh_keys() {
     run_cmd_as_root "$vm_cmd"
     vm_cmd="/bin/bash -c 'echo \\\$@ >> /home/$user/.ssh/authorized_keys' -- $id_rsa_pub"
     run_cmd_as_root "$vm_cmd"
-    # FIXME: chown -R $user /home/$user/.ssh/
+    vm_cmd="/bin/chown -R $user /home/$user/.ssh/"
+    run_cmd_as_root "$vm_cmd"
     #
     vm_cmd="/bin/mkdir /root/.ssh"
     run_cmd_as_root "$vm_cmd"
