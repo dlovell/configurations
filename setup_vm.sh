@@ -204,7 +204,7 @@ project_location=$(dirname $my_abs_path)
 
 # run install process on VM
 ssh root@$VM_IP mkdir -p $project_location
-scp -r $project_location root@$VM_IP:$project_location
+scp -r $project_location root@$VM_IP:$(dirname $project_location)
 ssh root@$VM_IP chown -R $user $project_location
 ssh root@$VM_IP bash $project_location/install.sh
 ssh $user@$VM_IP bash $project_location/run_configure_scripts.sh
