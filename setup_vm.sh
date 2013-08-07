@@ -37,9 +37,9 @@ do
     case "$opt" in
         h) usage;;
         i) VMX=$OPTARG;;
-        u) user=$user;;
-        w) user_password=$user_password;;
-        r) root_password=$root_password;;
+        u) user=$OPTARG;;
+        w) user_password=$OPTARG;;
+        r) root_password=$OPTARG;;
         s) start_only="True";;
         t) suspend_only="True";;
         k) ssh_keys_only="True";;
