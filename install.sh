@@ -37,6 +37,8 @@ apt-get install -y git
 # USER: bash configure_git.sh
 
 # pip, virtualenv, virtualenvwrapper
+apt-get build-dep -y python-pip
+# install most recent pip, else virtualenv{,wrapper} installs fail
 wget -O - https://raw.github.com/pypa/pip/master/contrib/get-pip.py | python
 source ~/.bashrc
 pip install virtualenv==1.10
