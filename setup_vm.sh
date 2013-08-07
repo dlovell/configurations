@@ -190,6 +190,9 @@ sleep 5
 
 # enable user to install python pacakges
 VM_IP=$(print_vm_ip_address "$VMX")
+# remove ip from known hosts to prevent "WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!"
+ssh-keygen -f ~/.ssh/known_hosts -R $VM_IP
+# send noop to accept host key
 ssh -o StrictHostKeyChecking=no root@$VM_IP ls
 sudoers_has_user=$(ssh root@$VM_IP grep $user /etc/sudoers)
 if [[ -z $sudoers_has_user ]]; then
