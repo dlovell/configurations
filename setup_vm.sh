@@ -198,12 +198,13 @@ else
 	ssh root@$VM_IP perl -pi.bak -e "'s/^$user ALL=\(ALL\) ALL.*/$user ALL=\(ALL:ALL\) NOPASSWD: ALL/'" /etc/sudoers
 fi
 
-# FIXME: should do these steps too
-# scp /opt/vm_tools/install.sh root@$VM_IP:/root/
-# ssh root@$VM_IP bash /root/install.sh
-# user=bigdata
-# ssh root@$VM_IP mkdir /opt/vm_tools
-# ssh root@$VM_IP chown $user /opt/vm_tools
-# scp -r /opt/vm_tools $user@$VM_IP:/opt/
-# ssh root@$VM_IP bash /opt/vm_tools/install.sh
-# ssh $user@$VM_IP “ls /opt/vm_tools/configure_*sh | xargs -n1 bash”
+# determine where we are
+my_abs_path=$(readlink -f "$0")
+project_location=$(dirname $my_abs_path)
+
+# run install process on VM
+ssh root@$VM_IP mkdir -p $project_location
+scp -r $project_location root@$VM_IP:$project_location
+ssh root@$VM_IP chown -R $user $project_location
+ssh root@$VM_IP bash $project_location/install.sh
+ssh $user@$VM_IP bash $project_location/run_configure_scripts.sh
