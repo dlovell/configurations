@@ -49,6 +49,9 @@ set -g status-keys vi
 # 256-color mode.
 set -g default-terminal "screen-256color"
 
+# make sure you can still send Ctrl-a with 'Ctrl-a a'
+bind a send-prefix
+
 
 # ##############################################################
 # Key bindings.
