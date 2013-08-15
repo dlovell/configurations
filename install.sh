@@ -49,6 +49,3 @@ pip install virtualenvwrapper==3.6
 apt-get install -y --force-yes vim-nox tmux
 # USER: bash configure_tmux_vim_slime_for_repl.sh
 # USER: bash configure_vim_for_python.sh
-
-# quant tools
-sudo apt-get build-dep -y python-numpy python-matplotlib python-scipy
