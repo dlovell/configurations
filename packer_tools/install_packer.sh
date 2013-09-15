@@ -4,7 +4,7 @@ if [[ -z $which_packer ]]; then
 	which_dir=~/packer
 	which_zip=0.3.7_linux_amd64.zip
 	#
-	sudo apt-get install qemu-utils
+	sudo apt-get install -y qemu-utils
 	cd
 	wget https://dl.bintray.com/mitchellh/packer/$which_zip
 	mkdir $which_dir
