@@ -12,5 +12,5 @@ if [[ -z $which_packer ]]; then
 	unzip ../$which_zip
 	cat -- >> ~/.bashrc <<EOF
 	export PATH=$PATH:$which_dir
-	EOF
+EOF
 fi
