@@ -10,6 +10,6 @@ if [[ $? -ne 0 ]]; then
 	echo "Failed to validate $packer_config_filename"
 	exit
 fi
-packer build $packer_config_filename 2>err
+export PACKER_LOG=1 && packer build $packer_config_filename 2>err
 vm_ip=$(grep Detected err | tail -n 1 | awk '{print $NF}')
 echo "vm_ip=$vm_ip"
