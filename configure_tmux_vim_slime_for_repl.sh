@@ -76,3 +76,8 @@ bind -r J resize-pane -D 5
 bind -r K resize-pane -U 5
 bind -r L resize-pane -R 5
 EOF
+
+# make sure ~/.bashrc is loaded for tmux
+cat >> ~/.bash_profile <<EOF
+. ~/.bashrc
+EOF
