@@ -16,7 +16,7 @@ apt-get update
 apt-get install -y htop nmon sysstat
 
 # support tools
-apt-get install -y screen sshfs xclip ack-grep
+apt-get install -y screen sshfs ack-grep # xclip
 
 # build tools
 apt-get install -y g++ make
@@ -29,7 +29,7 @@ fi
 /etc/init.d/ssh restart
 
 # emacs setup
-apt-get install -y emacs23
+apt-get install -y emacs23-nox
 # USER: bash configure_emacs.sh
 
 # git setup
