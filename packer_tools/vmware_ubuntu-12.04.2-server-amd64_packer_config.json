@@ -13,6 +13,6 @@
 	}],
 	"provisioners": [{
 		"type": "shell",
-		"script": "/opt/vm_tools/packer_tools/packer_provision_script.sh"
+		"script": "packer_provision_script.sh"
 	}]
 }	
