@@ -21,6 +21,9 @@ fi
 
 
 export PACKER_LOG=1 && packer build $packer_config_filename >out 2>err
-vm_ip=$(grep Detected err | tail -n 1 | awk '{print $NF}')
-echo "vm_ip=$vm_ip"
-ssh-keygen -f ~/.ssh/known_hosts -R $vm_ip
+# if NAT with port 2222
+ssh-keygen -f "/home/dlovell/.ssh/known_hosts" -R [127.0.0.1]:2222
+# if bridged, currently only works for VMware
+# vm_ip=$(grep Detected err | tail -n 1 | awk '{print $NF}')
+# echo "vm_ip=$vm_ip"
+# ssh-keygen -f ~/.ssh/known_hosts -R $vm_ip
