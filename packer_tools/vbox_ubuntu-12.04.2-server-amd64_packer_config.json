@@ -1,13 +1,9 @@
 {
-
-	"variables": {
-		"MAC_ADDRESS": null
-	},
 	
 	"builders": [{
 		"type": "virtualbox",
 		"vboxmanage": [
-			["modifyvm", "{{.Name}}", "--macaddress1", "{{user `MAC_ADDRESS`}}"]
+			["modifyvm", "{{.Name}}", "--natpf1", "\"guestssh,tcp,,2222,,22\""]
 			],
 		"guest_os_type": "Ubuntu_64",
 		"iso_url": "http://old-releases.ubuntu.com/releases/precise/ubuntu-12.04.2-server-amd64.iso",
@@ -19,11 +15,6 @@
 		"disk_size": 8000,
 		"headless": true,
 		"boot_command": [ "<esc><esc><enter><wait>", "/install/vmlinuz noapic ", "preseed/url=http://rawgithub.com/dlovell/vm_tools/master/packer_tools/ubuntu-12.04.2-server-preseed.cfg ", "debian-installer=en_US auto locale=en_US kbd-chooser/method=us ", "hostname={{ .Name }} ", "fb=false debconf/frontend=noninteractive ", "keyboard-configuration/modelcode=SKIP keyboard-configuration/layout=USA ", "keyboard-configuration/variant=USA console-setup/ask_detect=false ", "initrd=/install/initrd.gz -- <enter>" ]
-	}],
-
-	"provisioners": [{
-		"type": "shell",
-		"script": "packer_provision_script.sh"
 	}]
 
 }
