@@ -25,7 +25,7 @@
 	},
 	{
 		"type": "file",
-		"source": "/home/dlovell/CachedPythonPackages",
+		"source": "CachedPythonPackages",
 		"destination": "/tmp/"
 	},
 	{
