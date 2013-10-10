@@ -4,7 +4,7 @@
 		"type": "virtualbox",
 		"vboxmanage": [
 			["modifyvm", "{{.Name}}", "--macaddress1", "080027DC1BB1"],
-			["modifyvm", "{{.Name}}", "--natpf1", "\"guestssh,tcp,,2222,,22\""]
+			["modifyvm", "{{.Name}}", "--natpf1", "guestssh,tcp,,2222,,22"]
 			],
 		"guest_os_type": "Ubuntu_64",
 		"iso_url": "http://old-releases.ubuntu.com/releases/precise/ubuntu-12.04.2-server-amd64.iso",
