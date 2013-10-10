@@ -6,12 +6,12 @@ output_ovf=output-virtualbox/packer-virtualbox.ovf
 
 
 # build!
-bash create_vm_via_packer.sh $config_filename
+bash create_vm_via_packer.sh "$config_filename"
 
 
 # finish up
-VBoxManage import $output_ovf
-VBoxManage modifyvm $vmname --natpf1 "guestssh,tcp,,2222,22"
+VBoxManage import "$output_ovf"
+VBoxManage modifyvm "$vmname" --natpf1 "guestssh,tcp,,2222,22"
 
 
 # must be NAT on VM creation; change to bridged afterwards to be able to ssh in from outside
