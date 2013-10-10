@@ -14,7 +14,7 @@ VBoxManage import $output_ovf
 # must be NAT on VM creation; change to bridged afterwards to be able to ssh in from outside
 VBoxManage modifyvm "$vmname" --nic1 bridged
 VBoxManage modifyvm "$vmname" --bridgeadapter1 eth0
-VBoxManage modifyvm "$vmname" --macaddress1 $mac_addr
+VBoxManage modifyvm "$vmname" --macaddress1 $MAC_ADDR
 
 
 # start VM; append '--type headless' to have no gui
