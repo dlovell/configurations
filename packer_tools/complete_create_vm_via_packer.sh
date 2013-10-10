@@ -8,8 +8,10 @@ output_ovf=output-virtualbox/packer-virtualbox.ovf
 # build!
 bash create_vm_via_packer.sh $config_filename
 
+
 # finish up
 VBoxManage import $output_ovf
+VBoxManage modifyvm $vmname --natpf1 "guestssh,tcp,,2222,22"
 
 
 # start VM; append '--type headless' to have no gui
