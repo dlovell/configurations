@@ -14,6 +14,10 @@ VBoxManage import $output_ovf
 VBoxManage modifyvm $vmname --natpf1 "guestssh,tcp,,2222,22"
 
 
+# must be NAT on VM creation; change to bridged afterwards to be able to ssh in from outside
+VBoxManage modifyvm "$vmname" --macaddress1 080027DC1BB1
+
+
 # start VM; append '--type headless' to have no gui
 # VBoxManage startvm "$vmname"
 # remove VM
