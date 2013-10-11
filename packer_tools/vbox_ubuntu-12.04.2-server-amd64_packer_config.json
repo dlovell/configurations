@@ -29,7 +29,7 @@
 	},
 	{
 		"type": "shell",
-		"script": "install_crosscat.sh"
+		"script": "provision_crosscat.sh"
 	}
 	]
 
