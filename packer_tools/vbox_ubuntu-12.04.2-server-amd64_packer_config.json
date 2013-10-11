@@ -3,7 +3,6 @@
 	"builders": [{
 		"type": "virtualbox",
 		"vboxmanage": [
-			["modifyvm", "{{.Name}}", "--macaddress1", "080027DC1BB1"],
 			["modifyvm", "{{.Name}}", "--natpf1", "guestssh,tcp,,2222,,22"]
 			],
 		"guest_os_type": "Ubuntu_64",
