@@ -1,10 +1,12 @@
+vmname=packer-virtualbox
+#
 tar xvfz output-virtualbox.crosscat.tgz
-VBoxManage import output-virtualbox.crosscat/packer-virtualbox.ovf 
-VBoxManage modifyvm ~/VirtualBox\ VMs/packer-virtualbox/packer-virtualbox.vbox --macaddress1 080027DC1BB1
-VBoxManage startvm ~/VirtualBox\ VMs/packer-virtualbox/packer-virtualbox.vbox
+VBoxManage import output-virtualbox.crosscat/"${vmname}".ovf
+VBoxManage modifyvm "${vmname}" --macaddress1 080027DC1BB1
+VBoxManage startvm "${vmname}"
 ssh -p 2222 packer@localhost
 
 # to power off
-# VBoxManage controlvm ~/VirtualBox\ VMs/packer-virtualbox/packer-virtualbox.vbox poweroff
+# VBoxManage controlvm "${vmname}" poweroff
 # to remove (must be powered off)
-# VBoxManage unregistervm ~/VirtualBox\ VMs/packer-virtualbox/packer-virtualbox.vbox --delete
+# VBoxManage unregistervm "${vmname}" --delete
