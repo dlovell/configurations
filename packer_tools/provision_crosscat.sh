@@ -1,5 +1,9 @@
 # install crosscat
-crosscat_dir=/home/packer/crosscat
+
+
+# settings
+crosscat_dir=~/crosscat
+sudo_pass=bigdata
 
 
 # download
