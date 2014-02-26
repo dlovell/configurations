@@ -2,8 +2,8 @@
 
 
 # set up for me
-# git config --global user.email "YOUR EMAIL GOES HERE"
-# git config --global user.name YOUR_USERNAME_GOES_HERE
+git config --global user.email dlovell@gmail.com
+git config --global user.name dlovell
 
 # customize
 git config --global color.diff auto
