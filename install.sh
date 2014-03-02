@@ -32,9 +32,8 @@ fi
 apt-get install -y git
 # USER: bash configure_git.sh
 
-# pip, virtualenv, virtualenvwrapper
-apt-get build-dep -y python-pip
-# USER: bash configure_pip_and_virtualenv.sh
+# pip
+apt-get install -y python-pip
 
 # install vim, tmux
 apt-get install -y --force-yes vim-nox tmux
