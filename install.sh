@@ -16,9 +16,9 @@ apt-get install -y htop nmon sysstat
 
 # support tools
 apt-get install -y screen sshfs ack-grep # xclip
-
-# build tools
-apt-get install -y g++ make
+apt-get install -y --force-yes vim-nox tmux
+# USER: bash configure_tmux_vim_slime_for_repl.sh
+# USER: bash configure_vim_for_python.sh
 
 # ssh server
 apt-get install -y openssh-server
@@ -27,15 +27,6 @@ if [[ -z $(grep ^Password /etc/ssh/ssh_config) ]]; then
 fi
 /etc/init.d/ssh restart
 
-
-# git setup
-apt-get install -y git
+# code/package helpers
+apt-get install -y git python-pip
 # USER: bash configure_git.sh
-
-# pip
-apt-get install -y python-pip
-
-# install vim, tmux
-apt-get install -y --force-yes vim-nox tmux
-# USER: bash configure_tmux_vim_slime_for_repl.sh
-# USER: bash configure_vim_for_python.sh
