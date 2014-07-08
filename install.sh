@@ -28,5 +28,6 @@ fi
 /etc/init.d/ssh restart
 
 # code/package helpers
-apt-get install -y git python-pip
+apt-get install -y git
+wget https://bootstrap.pypa.io/get-pip.py -O - | python
 # USER: bash configure_git.sh
