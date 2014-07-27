@@ -1,18 +1,6 @@
 #!/usr/bin/env bash
 
 
-function configure_vim_for_pathogen {
-	PATHOGEN_URL="https://raw.github.com/tpope/vim-pathogen/master/autoload/pathogen.vim"
-	AUTOLOAD_DIR=~/vim/autload
-	# set up pathogem.vim
-	mkdir -p $AUTOLOAD_DIR
-	wget -O ${AUTOLOAD_DIR}/pathogen.vim "${PATHOGEN_URL}"
-	cat >> ~/.vimrc <<EOF
-execute pathogen#infect()
-EOF
-
-}
-
 function install_vim_slime {
 	VIM_SLIME_URL="git://github.com/jpalardy/vim-slime.git"
 	BUNDLE_DIR=~/.vim/bundle
@@ -33,5 +21,4 @@ EOF
 }
 
 
-configure_vim_for_pathogen
 install_vim_slime
