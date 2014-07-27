@@ -58,3 +58,4 @@ EOF
 cat >> ~/.bash_profile <<EOF
 . ~/.bashrc
 EOF
+touch ~/.bashrc
