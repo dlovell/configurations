@@ -1,5 +1,5 @@
 # Modifications to vim: indenting for python using ftplugin per http://henry.precheur.org/vim/python
-# requires configure_vim.sh to have been run
+# requires configure_vim.sh to have been run: sets up ftplugin
 
 
 FTPLUGIN_DIR=~/.vim/ftplugin
