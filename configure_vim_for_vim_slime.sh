@@ -19,8 +19,8 @@ EOF
 
 function fixup_slime_dot_vim {
 	# correct the python slime.vim
-	perl -i.orig -pe 's/substitute\(a:text.*/a:text/' $PYTHON_SLIME_VIM
 	PYTHON_SLIME_VIM=~/.vim/bundle/vim-slime/ftplugin/python/slime.vim
+	perl -i.orig -pe 's/substitute\(a:text.*/a:text/' $PYTHON_SLIME_VIM
 }
 
 
