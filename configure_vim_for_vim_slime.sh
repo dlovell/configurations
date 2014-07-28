@@ -1,24 +1,28 @@
 #!/usr/bin/env bash
+set -eu
 
 
-function install_vim_slime {
+BUNDLE_DIR=~/.vim/bundle
+
+
+function install_vim_slime_for_pathogen {
 	VIM_SLIME_URL="git://github.com/jpalardy/vim-slime.git"
-	BUNDLE_DIR=~/.vim/bundle
-	PYTHON_SLIME_VIM=~/.vim/bundle/vim-slime/ftplugin/python/slime.vim
 
-	# install vim-slime via pathogen
-	mkdir -p $BUNDLE_DIR
-	cd $BUNDLE_DIR
+	mkdir -p $BUNDLE_DIR && cd $BUNDLE_DIR
 	git clone $VIM_SLIME_URL
-	# correct the python slime.vim
-	perl -i.orig -pe 's/substitute\(a:text.*/a:text/' $PYTHON_SLIME_VIM
 
 	# use tmux for slime
 	cat >> ~/.vimrc <<EOF
 let g:slime_target = "tmux"
 EOF
+}
 
+function fixup_slime_dot_vim {
+	# correct the python slime.vim
+	perl -i.orig -pe 's/substitute\(a:text.*/a:text/' $PYTHON_SLIME_VIM
+	PYTHON_SLIME_VIM=~/.vim/bundle/vim-slime/ftplugin/python/slime.vim
 }
 
 
-install_vim_slime
+install_vim_slime_for_pathogen
+fixup_slime_dot_vim
