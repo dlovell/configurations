@@ -6,6 +6,7 @@ BUNDLE_DIR=~/.vim/bundle
 
 
 function install_syntastic_for_pathogen {
+	# FIXME: needs a check for conda and appropriate action if not installed
 	# requires: conda install flake8
 	SYNTASTIC_URL=https://github.com/scrooloose/syntastic.git
 
