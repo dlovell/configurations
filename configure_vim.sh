@@ -16,7 +16,7 @@ EOF
 }
 
 function use_pathogen {
-	PATHOGEN_URL="https://raw.github.com/tpope/vim-pathogen/master/autoload/pathogen.vim"
+	PATHOGEN_URL="https://raw.githubusercontent.com/tpope/vim-pathogen/master/autoload/pathogen.vim"
 	AUTOLOAD_DIR=~/.vim/autoload
 	# set up pathogem.vim
 	mkdir -p $AUTOLOAD_DIR
