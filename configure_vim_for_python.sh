@@ -4,7 +4,7 @@ set -eu
 
 
 FTPLUGIN_DIR=~/.vim/ftplugin
-PYTHON_VIM=~$FTPLUGIN_DIR/python.vim
+PYTHON_VIM=$FTPLUGIN_DIR/python.vim
 
 
 cat -- >> $PYTHON_VIM <<EOF
