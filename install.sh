@@ -17,8 +17,6 @@ apt-get install -y htop nmon sysstat
 # support tools
 apt-get install -y screen sshfs ack-grep # xclip
 apt-get install -y --force-yes vim-nox tmux
-# USER: bash configure_tmux_vim_slime_for_repl.sh
-# USER: bash configure_vim_for_python.sh
 
 # ssh server
 apt-get install -y openssh-server
@@ -30,4 +28,3 @@ fi
 # code/package helpers
 apt-get install -y git
 wget https://bootstrap.pypa.io/get-pip.py -O - | python
-# USER: bash configure_git.sh
