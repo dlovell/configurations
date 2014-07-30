@@ -1,3 +1,7 @@
+#!/usr/bin/env bash
+set -eu
+
+
 function python_readlink {
 	PYTHON_COMMAND='from __future__ import print_function; import sys, os; print(os.path.realpath(sys.argv[1]))'
 	PYTHON_OUTPUT=$(python -c "$PYTHON_COMMAND" $1)
