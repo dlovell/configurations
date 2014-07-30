@@ -1,5 +1,5 @@
 function python_readlink {
-	PYTHON_COMMAND='import sys, os; print os.path.realpath(sys.argv[1])'
+	PYTHON_COMMAND='from __future__ import print_function; import sys, os; print(os.path.realpath(sys.argv[1]))'
 	PYTHON_OUTPUT=$(python -c "$PYTHON_COMMAND" $1)
 	echo $PYTHON_OUTPUT
 }
