@@ -11,4 +11,37 @@ git config --global color.status auto
 git config --global color.branch auto
 git config --global color.interactive auto
 
+# set up bash aliases; presumes ~/.bashrc sources ~/.bash_aliases
+echo "
+alias g='git'
+alias gco='git checkout'
+alias gpo='git push origin'
+alias gcmp='gcm && gpo'
+alias gcd='gco develop'
+alias gb='git branch'
+alias gba='gb -a'
+alias ga='git add'
+alias gai='git add -i'
+alias gap='git add -p'
+alias gc='git commit'
+alias gcm='git commit -m "Checkpoint commit."'
+alias gpu='git push'
+alias gpl='git pull'
+alias gs='git status'
+alias gd='git diff'
+alias gdc='git diff --cached'
+alias gg='git grep -n'
+alias gds='git diff --staged'
+alias gre='git checkout -- '
+alias gus='git reset HEAD'
+alias gll='git lol'
+alias gla='git lola'
+alias gpod='gpo develop'
+alias gpom='gpo master'
+# git 'fuck it' (let's push it live)
+alias gfi='git add -A && git commit -m \"Checkpoint.\" && git push'
 
+gk() {
+	   (gitk > /dev/null 2>&1) &
+   }
+" >> ~/.bash_aliases
