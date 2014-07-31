@@ -11,6 +11,10 @@ git config --global color.status auto
 git config --global color.branch auto
 git config --global color.interactive auto
 
+# git aliases
+git config --global alias.lol "log --graph --decorate --pretty=oneline --abbrev-commit"
+git config --global alias.lola "log --graph --decorate --pretty=oneline --abbrev-commit --all"
+
 # set up bash aliases; presumes ~/.bashrc sources ~/.bash_aliases
 echo "
 alias g='git'
