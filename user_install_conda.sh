@@ -1,10 +1,12 @@
 #!/usr/bin/env bash
+set -eu
 
 
 ANACONDA_URL=http://repo.continuum.io/archive/Anaconda-2.0.1-Linux-x86_64.sh
 MINICONDA_URL=http://repo.continuum.io/miniconda/Miniconda3-3.5.5-Linux-x86_64.sh
 CONDA_URL=$MINICONDA_URL
 WHICH_CONDA=$(basename $CONDA_URL)
+BASH_RC=$HOME/.bashrc
 
 
 function install_conda {
@@ -17,7 +19,7 @@ function install_conda {
 	source <(grep -m 1 ^PREFIX= $CONDA_DEST --binary-files=text)
 	echo "
 # added by Miniconda3 3.5.5 installer
-export PATH=\"$PREFIX/bin:\$PATH\"" >>$HOME/.bashrc
+export PATH=\"$PREFIX/bin:\$PATH\"" >>$BASH_RC
 }
 
 function conda_install_things {
