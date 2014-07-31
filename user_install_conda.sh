@@ -23,7 +23,7 @@ export PATH=\"$PREFIX/bin:\$PATH\"" >>$BASH_RC
 }
 
 function conda_install_things {
-	conda install pip patchelf
+	bash -i -c 'conda install --yes pip patchelf'
 }
 
 
