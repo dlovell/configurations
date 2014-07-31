@@ -10,6 +10,7 @@ git config --global color.diff auto
 git config --global color.status auto
 git config --global color.branch auto
 git config --global color.interactive auto
+git config --global push.default simple
 
 # git aliases
 git config --global alias.lol "log --graph --decorate --pretty=oneline --abbrev-commit"
