@@ -27,6 +27,13 @@ EOF
 
 }
 
+function mouse_controls_vim {
+	# http://stackoverflow.com/a/12080433
+	echo "
+# mouse controls vim
+:set mouse=a" >> $VIMRC
+}
 
 use_ftplugin
 use_pathogen
+mouse_controls_vim
