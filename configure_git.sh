@@ -50,3 +50,6 @@ gk() {
 	   (gitk > /dev/null 2>&1) &
    }
 " >> ~/.bash_aliases
+
+# password cacher
+git config credential.helper 'cache --timeout=30'
