@@ -30,7 +30,7 @@ EOF
 function mouse_controls_vim {
 	# http://stackoverflow.com/a/12080433
 	echo "
-# mouse controls vim
+\" mouse controls vim
 :set mouse=a" >> $VIMRC
 }
 
