@@ -11,7 +11,12 @@ git config --global color.status auto
 git config --global color.branch auto
 git config --global color.interactive auto
 git config --global push.default simple
+# vim
 git config --global core.editor vim
+# vimdiff
+git config --global diff.tool vimdiff
+git config --global merge.tool vimdiff
+git config --global difftool.prompt false
 
 # git aliases
 git config --global alias.lol "log --graph --decorate --pretty=oneline --abbrev-commit"
