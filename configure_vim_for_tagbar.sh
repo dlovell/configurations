@@ -13,19 +13,25 @@ function install_syntastic_for_tagbar {
 	mkdir -p $BUNDLE_DIR && cd $BUNDLE_DIR
 	git clone $TAGBAR_URL
 
-#	brew install ctags
-#	echo "
-#\" use brew's ctags
-#let g:tagbar_ctags_bin='/usr/local/bin/ctags'
-#" >> $VIMRC
-
-	sudo apt-get install exuberant-ctags
-	echo "
+	if [[ ! -z $(uname | grep CYGWIN) ]]; then
+		echo "Detected CYGWIN: Assuming ctags installed"
+	elif [[ ! -z $(uname | grep Darwin) ]]; then
+		echo "Detected Darwin: installing ctags via brew"
+		brew install ctags
+		echo "
+\" use brew's ctags
+let g:tagbar_ctags_bin='/usr/local/bin/ctags'
+" >> $VIMRC
+	elif [[ ! -z $(uname | grep Linux) ]]; then
+		echo "Detected Linux: installing ctags via apt-get"
+		sudo apt-get install exuberant-ctags
+		echo "
 \" use exuberant ctags
 let g:tagbar_ctags_bin='/usr/bin/ctags-exuberant'
 " >> $VIMRC
+	fi
 
 }
 
 
-install_syntastic_for_pathogen
+install_syntastic_for_tagbar
