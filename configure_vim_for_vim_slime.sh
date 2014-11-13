@@ -6,7 +6,7 @@ BUNDLE_DIR=~/.vim/bundle
 
 
 function install_vim_slime_for_pathogen {
-	VIM_SLIME_URL="git://github.com/jpalardy/vim-slime.git"
+	VIM_SLIME_URL="https://github.com/jpalardy/vim-slime.git"
 
 	mkdir -p $BUNDLE_DIR && cd $BUNDLE_DIR
 	git clone $VIM_SLIME_URL
