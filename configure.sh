@@ -19,3 +19,4 @@ bash configure_vim.sh
 bash configure_vim_for_python.sh
 bash configure_vim_for_vim_slime.sh
 bash configure_vim_for_syntastic.sh
+bash configure_vim_for_tagbar.sh
