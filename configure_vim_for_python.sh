@@ -7,6 +7,9 @@ FTPLUGIN_DIR=~/.vim/ftplugin
 PYTHON_VIM=$FTPLUGIN_DIR/python.vim
 
 
+# # tried to insert this into vimrc but didn't take?
+# nnoremap <silent> <buffer> <cr> :PythonSearchContext<cr>
+
 mkdir -p $FTPLUGIN_DIR
 cat -- >> $PYTHON_VIM <<EOF
 setlocal tabstop=4

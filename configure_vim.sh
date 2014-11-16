@@ -34,6 +34,9 @@ function mouse_controls_vim {
 :set mouse=a" >> $VIMRC
 }
 
+# # sometimes need to do this on windows box at JPMC?
+# set backspace=2
+
 use_ftplugin
 use_pathogen
 mouse_controls_vim
