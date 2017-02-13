@@ -8,21 +8,23 @@ if [[ "$USER" != "root" ]]; then
 fi
 
 
+SERVICES=(openssh-server)
+SYSTEM_MONITORING=(htop nmon ncdu powertop)
+SUPPORT=(sshfs xclip)
+DEVELOPMENT=(git vim-nox tmux ccache)
+
+
 function apt_get_install {
-	# system monitoring tools
-	apt-get install -y htop nmon sysstat
 
-	# support tools
-	apt-get install -y screen sshfs ack-grep # xclip
-	apt-get install -y --force-yes vim-nox tmux
+    apt-get install --yes \
+        ${SERVICES[*]} \
+        ${SYSTEM_MONITORING[*]} \
+        ${SUPPORT[*]} \
+        ${DEVELOPMENT[*]}
 
-	# ssh server
-	apt-get install -y openssh-server
-
-	# code/package helpers
-	apt-get install -y git
 }
 
+# FIXME; does this really matter?  Its ssh_config, not sshd_config
 function configure_sshd {
 	if [[ -z $(grep ^Password /etc/ssh/ssh_config) ]]; then
 		sudo perl -i.bak -pe 's/^#\s+(Password.*)/$1/' /etc/ssh/ssh_config
