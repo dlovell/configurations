@@ -58,4 +58,4 @@ gk() {
 " >> ~/.bash_aliases
 
 # password cacher
-git config credential.helper 'cache --timeout=30'
+git config --global credential.helper 'cache --timeout=30'
