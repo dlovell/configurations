@@ -2,9 +2,19 @@
 set -eu
 
 
-ANACONDA_URL=http://repo.continuum.io/archive/Anaconda-2.0.1-Linux-x86_64.sh
-MINICONDA_URL=http://repo.continuum.io/miniconda/Miniconda3-3.5.5-Linux-x86_64.sh
-CONDA_URL=$MINICONDA_URL
+function get_latest_anaconda {
+	wget $ANACONDA_BASE_URL -o wget.err -O- \
+		| grep Anaconda3 | grep Linux-x86_64 \
+		| sort \
+		| tail -n 1 \
+		| perl -ne 'print $1 if m/">(Anaconda3.*)<\/a/'
+}
+
+
+ANACONDA_BASE_URL=https://repo.continuum.io/archive
+ANACONDA_URL=$ANACONDA_BASE_URL/$(get_latest_anaconda)
+MINICONDA_URL=http://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh
+CONDA_URL=$ANACONDA_URL
 WHICH_CONDA=$(basename $CONDA_URL)
 BASH_RC=$HOME/.bashrc
 
@@ -18,14 +28,9 @@ function install_conda {
 	# get prefix
 	source <(grep -m 1 ^PREFIX= $CONDA_DEST --binary-files=text)
 	echo "
-# added by Miniconda3 3.5.5 installer
+# added by Anaconda3/Miniconda3 installer
 export PATH=\"$PREFIX/bin:\$PATH\"" >>$BASH_RC
-}
-
-function conda_install_things {
-	bash -i -c 'conda install --yes pip patchelf'
 }
 
 
 install_conda
-conda_install_things
