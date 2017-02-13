@@ -34,5 +34,6 @@ function configure_sshd {
 
 
 apt-get update
+apt-get dist-upgrade
 apt_get_install
 configure_sshd
