@@ -30,6 +30,18 @@ function install_conda {
 	echo "
 # added by Anaconda3/Miniconda3 installer
 export PATH=\"$PREFIX/bin:\$PATH\"" >>$BASH_RC
+
+	# set up for some other stuff
+	$PREFIX/bin/conda install pandoc
+	echo "
+function shell_view_rst {
+	pandoc \$1 | lynx -stdin
+}
+
+function shell_view_md {
+	man <(rst2man.py \$1)
+}
+" >> $BASH_RC
 }
 
 
