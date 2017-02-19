@@ -12,6 +12,7 @@ SERVICES=(openssh-server)
 SYSTEM_MONITORING=(htop nmon ncdu powertop)
 SUPPORT=(sshfs xclip)
 DEVELOPMENT=(git vim-nox tmux ccache)
+GENERAL=(lynx, pidgin)
 
 
 function apt_get_install {
@@ -20,7 +21,8 @@ function apt_get_install {
         ${SERVICES[*]} \
         ${SYSTEM_MONITORING[*]} \
         ${SUPPORT[*]} \
-        ${DEVELOPMENT[*]}
+        ${DEVELOPMENT[*]} \
+        ${GENERAL[*]} \
 
 }
 
