@@ -9,7 +9,7 @@ fi
 
 
 SERVICES=(openssh-server)
-SYSTEM_MONITORING=(htop nmon ncdu powertop)
+SYSTEM_MONITORING=(htop nmon ncdu powertop cpufrequtils)
 SUPPORT=(sshfs xclip)
 DEVELOPMENT=(git vim-nox tmux ccache)
 GENERAL=(lynx, pidgin)
