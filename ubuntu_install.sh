@@ -34,7 +34,16 @@ function customize_dconf {
 }
 
 
+function nopasswd_sudoers {
+    # http://askubuntu.com/a/235264
+    # `pkexec visudo -f /etc/sudoers.d/01_ubuntu_install`: graphical validation of password, somehow gets around malformed /etc/sudoers.d issues
+    echo "$SUDO_USER ALL=NOPASSWD: /sbin/shutdown, /usr/sbin/powertop" | \
+        sudo tee /etc/sudoers.d/01_ubuntu_install >/dev/null
+}
+
+
 apt-get update
 apt-get dist-upgrade
 apt_get_install
 customize_dconf
+nopasswd_sudoers
