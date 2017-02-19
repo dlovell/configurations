@@ -26,9 +26,15 @@ function apt_get_install {
 
 }
 
+
+function customize_dconf {
+    # http://askubuntu.com/a/337210
+    # set to Disabled
+    dconf write /org/compiz/integrated/show-hud '[""]'
 }
 
 
 apt-get update
 apt-get dist-upgrade
 apt_get_install
+customize_dconf
