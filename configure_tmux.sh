@@ -38,10 +38,10 @@ bind a send-prefix
 bind r source-file ~/.tmux.conf \; display "Reloaded!"
 
 # Split windows with a more visual set of characters.
-bind | split-window -h
-bind - split-window -v
-bind \ split-window -h
-bind _ split-window -v
+bind | split-window -h -c "#{pane_current_path}"
+bind - split-window -v -c "#{pane_current_path}"
+bind \ split-window -h -c "#{pane_current_path}"
+bind _ split-window -v -c "#{pane_current_path}"
 
 # Select panes with vi-style movement commands.
 bind h select-pane -L
