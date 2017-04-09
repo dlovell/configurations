@@ -13,6 +13,7 @@ project_location=$(dirname $my_abs_path)
 cd $project_location
 
 
+bash user_install_conda.sh
 bash configure_git.sh
 bash configure_tmux.sh
 bash configure_vim.sh

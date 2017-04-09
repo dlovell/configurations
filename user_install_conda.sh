@@ -45,4 +45,6 @@ function shell_view_md {
 }
 
 
-install_conda
+if [ -z $(which conda) ]; then
+	install_conda
+fi
