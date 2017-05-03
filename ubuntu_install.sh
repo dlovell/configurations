@@ -8,29 +8,42 @@ if [[ "$USER" != "root" ]]; then
 fi
 
 
+SERVICES=(openssh-server)
+SYSTEM_MONITORING=(htop nmon ncdu powertop cpufrequtils nmap)
+SUPPORT=(sshfs xclip)
+DEVELOPMENT=(git vim-nox tmux ccache)
+GENERAL=(lynx pidgin libgnome2-bin)
+
+
 function apt_get_install {
-	# system monitoring tools
-	apt-get install -y htop nmon sysstat
 
-	# support tools
-	apt-get install -y screen sshfs ack-grep # xclip
-	apt-get install -y --force-yes vim-nox tmux
+    apt-get install --yes \
+        ${SERVICES[*]} \
+        ${SYSTEM_MONITORING[*]} \
+        ${SUPPORT[*]} \
+        ${DEVELOPMENT[*]} \
+        ${GENERAL[*]} \
 
-	# ssh server
-	apt-get install -y openssh-server
-
-	# code/package helpers
-	apt-get install -y git
 }
 
-function configure_sshd {
-	if [[ -z $(grep ^Password /etc/ssh/ssh_config) ]]; then
-		sudo perl -i.bak -pe 's/^#\s+(Password.*)/$1/' /etc/ssh/ssh_config
-	fi
-	/etc/init.d/ssh restart
+
+function customize_dconf {
+    # http://askubuntu.com/a/337210
+    # set to Disabled
+    dconf write /org/compiz/integrated/show-hud '[""]'
+}
+
+
+function nopasswd_sudoers {
+    # http://askubuntu.com/a/235264
+    # `pkexec visudo -f /etc/sudoers.d/01_ubuntu_install`: graphical validation of password, somehow gets around malformed /etc/sudoers.d issues
+    echo "$SUDO_USER ALL=NOPASSWD: /sbin/shutdown, /usr/sbin/powertop, /usr/sbin/pm-hibernate" | \
+        sudo tee /etc/sudoers.d/01_ubuntu_install >/dev/null
 }
 
 
 apt-get update
+apt-get dist-upgrade --yes
 apt_get_install
-configure_sshd
+customize_dconf
+nopasswd_sudoers

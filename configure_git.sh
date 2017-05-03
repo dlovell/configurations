@@ -34,6 +34,7 @@ alias gba='gb -a'
 alias ga='git add'
 alias gai='git add -i'
 alias gap='git add -p'
+alias gau='git add -u'
 alias gc='git commit'
 alias gcm='git commit -m "Checkpoint commit."'
 alias gpu='git push'
@@ -47,6 +48,7 @@ alias gre='git checkout -- '
 alias gus='git reset HEAD'
 alias gll='git lol'
 alias gla='git lola'
+alias glp='git log -p'
 alias gpod='gpo develop'
 alias gpom='gpo master'
 # git 'fuck it' (let's push it live)
@@ -58,4 +60,4 @@ gk() {
 " >> ~/.bash_aliases
 
 # password cacher
-git config credential.helper 'cache --timeout=30'
+git config --global credential.helper 'cache --timeout=30'
