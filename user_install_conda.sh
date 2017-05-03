@@ -32,7 +32,7 @@ function install_conda {
 export PATH=\"$PREFIX/bin:\$PATH\"" >>$BASH_RC
 
 	# set up for some other stuff
-	$PREFIX/bin/conda install pandoc
+	$PREFIX/bin/conda install pandoc --yes
 	echo "
 function shell_view_rst {
 	pandoc \$1 | lynx -stdin
