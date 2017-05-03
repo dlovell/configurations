@@ -43,7 +43,7 @@ function nopasswd_sudoers {
 
 
 apt-get update
-apt-get dist-upgrade
+apt-get dist-upgrade --yes
 apt_get_install
 customize_dconf
 nopasswd_sudoers
