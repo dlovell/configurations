@@ -6,26 +6,26 @@ BASH_RC=$HOME/.bashrc
 
 
 cat >> $BASH_RC <<EOF
+ENCRYPTED_DIR=~/.encrypted
+mkdir -p \$ENCRYPTED_DIR
+PIDGIN_FILE=\$ENCRYPTED_DIR/pidgin
+
+# plain-text passwords only viewable at creation
+# https://security.google.com/settings/security/apppasswords
 OPENSSL_BASE_CMD="openssl enc -aes-128-cbc -a -salt"
 XCLIP_CMD="xclip -sel clip"
-PIDGIN_FILE=~/.encrypted/pidgin
-
-function __encrypt_clipboard_to_stdout {
-        \$XCLIP_CMD -out | \$OPENSSL_BASE_CMD -e
+#
+function __encrypt_clipboard_to_file {
+        \$XCLIP_CMD -out | \$OPENSSL_BASE_CMD -e -out \$1
 }
-
-function __decrypt_stdin_to_clipboard {
-        \$OPENSSL_BASE_CMD -d | \$XCLIP_CMD
+function __decrypt_file_to_clipboard {
+        \$OPENSSL_BASE_CMD -d -in \$1 | \$XCLIP_CMD
 }
-
+#
 function __encrypt_clipboard_to_pidgin {
-	# plain-text passwords only viewable at creation
-	# https://security.google.com/settings/security/apppasswords
-        mkdir -p \$(dirname \$PIDGIN_FILE)
-        \$XCLIP_CMD -out | \$OPENSSL_BASE_CMD -e > \$PIDGIN_FILE
+	__encrypt_clipboard_to_file \$PIDGIN_FILE
 }
-
 function __decrypt_pidgin_to_clipboard {
-        \$OPENSSL_BASE_CMD -d -in \$PIDGIN_FILE | \$XCLIP_CMD
+	__decrypt_file_to_clipboard \$PIDGIN_FILE
 }
 EOF
