@@ -34,9 +34,17 @@ function mouse_controls_vim {
 :set mouse=a" >> $VIMRC
 }
 
+function set_color_scheme {
+	# https://unix.stackexchange.com/a/88880
+	echo "
+\" comments aren't dark blue
+:color desert" >> $VIMRC
+}
+
 # # sometimes need to do this on windows box at JPMC?
 # set backspace=2
 
 use_ftplugin
 use_pathogen
 mouse_controls_vim
+set_color_scheme
