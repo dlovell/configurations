@@ -30,7 +30,7 @@ let syntastic_python_flake8_exec = '$WHICH_FLAKE8'
 \" https://github.com/vim-syntastic/syntastic#3-recommended-settings
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
+\" let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 " >> $VIMRC
 }
