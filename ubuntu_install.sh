@@ -12,7 +12,7 @@ SERVICES=(openssh-server)
 SYSTEM_MONITORING=(htop nmon ncdu powertop cpufrequtils nmap)
 SUPPORT=(sshfs xclip)
 DEVELOPMENT=(git vim-nox tmux ccache)
-GENERAL=(lynx pidgin libgnome2-bin tree)
+GENERAL=(lynx pidgin libgnome2-bin tree gnome-tweak-tool)
 
 
 function apt_get_install {
