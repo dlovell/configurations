@@ -14,6 +14,7 @@ function install_vim_slime_for_pathogen {
 	# use tmux for slime
 	cat >> ~/.vimrc <<EOF
 let g:slime_target = "tmux"
+let g:slime_python_ipython = 1
 EOF
 }
 
