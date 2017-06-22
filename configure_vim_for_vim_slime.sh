@@ -15,6 +15,9 @@ function install_vim_slime_for_pathogen {
 	cat >> ~/.vimrc <<EOF
 let g:slime_target = "tmux"
 let g:slime_python_ipython = 1
+" backslash-e sends text to tmux
+xmap <leader>e <Plug>SlimeRegionSend
+nmap <leader>e <Plug>SlimeParagraphSend
 EOF
 }
 
