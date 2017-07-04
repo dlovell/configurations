@@ -11,6 +11,17 @@ let leader = '\'
 EOF
 }
 
+function set_python_macros {
+	cat -- >> $VIMRC <<EOF
+nnoremap <leader>q A  # noqa<esc>
+nnoremap <leader>d Oimport pdb; pdb.set_trace()  # noqa<esc>
+nnoremap <leader>c I# <esc>
+nnoremap @q A  # noqa<esc>
+nnoremap @d Oimport pdb; pdb.set_trace()  # noqa<esc>
+nnoremap @c I# <esc>
+EOF
+}
+
 function use_ftplugin {
 	# Modifications to vim: using ftplugin per http://henry.precheur.org/vim/python
 	FTPLUGIN_DIR=~/.vim/ftplugin
@@ -51,6 +62,7 @@ function set_color_scheme {
 # set backspace=2
 
 set_leader
+set_python_macros
 use_ftplugin
 use_pathogen
 mouse_controls_vim
