@@ -18,8 +18,7 @@ let g:slime_python_ipython = 1
 " backslash-e sends text to tmux
 xmap <leader>e <Plug>SlimeRegionSend
 nmap <leader>e <Plug>SlimeParagraphSend
-
-
+"
 function! SlimeRegionSendNoCpaste() range
     " https://stackoverflow.com/a/18547013
     if exists('g:slime_python_ipython')
@@ -30,8 +29,7 @@ function! SlimeRegionSendNoCpaste() range
         execute "normal \<Plug>SlimeRegionSend"
     end
 endfunction
-
-
+"
 xmap <leader>r :call SlimeRegionSendNoCpaste()<esc>
 EOF
 }

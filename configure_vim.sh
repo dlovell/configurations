@@ -5,6 +5,12 @@ set -eu
 VIMRC=~/.vimrc
 
 
+function set_leader {
+	cat -- >> $VIMRC <<EOF
+let leader = '\'
+EOF
+}
+
 function use_ftplugin {
 	# Modifications to vim: using ftplugin per http://henry.precheur.org/vim/python
 	FTPLUGIN_DIR=~/.vim/ftplugin
@@ -44,6 +50,7 @@ function set_color_scheme {
 # # sometimes need to do this on windows box at JPMC?
 # set backspace=2
 
+set_leader
 use_ftplugin
 use_pathogen
 mouse_controls_vim
