@@ -5,4 +5,6 @@ alias nmap-scan='nmap -sn'
 alias radio-all-on='nmcli radio all on'
 alias radio-all-off='nmcli radio all off'
 alias connection-up='nmcli connection up'
+alias device-wifi-list='nmcli device wifi list'
+alias device-wifi-connect='nmcli device wifi connect'
 EOF
