@@ -13,10 +13,10 @@ EOF
 
 function set_python_macros {
 	cat -- >> $VIMRC <<EOF
-nnoremap <leader>q A  # noqa<esc>
+nnoremap <leader>q :let mytw=&tw<CR>:let &tw=0<CR>A  # noqa<esc>:let &tw=mytw<CR>
 nnoremap <leader>d Oimport pdb; pdb.set_trace()  # noqa<esc>
 nnoremap <leader>c I# <esc>
-nnoremap @q A  # noqa<esc>
+nnoremap @q :let mytw=&tw<CR>:let &tw=0<CR>A  # noqa<esc>:let &tw=mytw<CR>
 nnoremap @d Oimport pdb; pdb.set_trace()  # noqa<esc>
 nnoremap @c I# <esc>
 EOF
