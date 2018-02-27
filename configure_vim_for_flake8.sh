@@ -4,7 +4,7 @@ set -eu
 
 BUNDLE_DIR=~/.vim/bundle
 VIMRC=~/.vimrc
-ENV_NAME=_vim_flake8
+ENV_NAME=_vim
 export PATH="$(dirname $(bash -ic 'which conda')):$PATH"
 
 
