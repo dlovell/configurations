@@ -6,7 +6,7 @@ BUNDLE_DIR=~/.vim/bundle
 VIMRC=~/.vimrc
 
 
-function install_syntastic_for_tagbar {
+function install_tagbar_for_pathogen {
 	TAGBAR_URL=https://github.com/majutsushi/tagbar
 
 
@@ -34,4 +34,4 @@ let g:tagbar_ctags_bin='/usr/bin/ctags-exuberant'
 }
 
 
-install_syntastic_for_tagbar
+install_tagbar_for_pathogen
