@@ -21,6 +21,7 @@ function install_syntastic_for_pathogen {
 	fi
 	set +u
 	WHICH_FLAKE8=$(source activate $ENV_NAME && which flake8)
+	WHICH_PYTHON=$(source activate $ENV_NAME && which python)
 	set -u
 	echo "
 \" speed up after write by only using flake8 by default
@@ -30,7 +31,7 @@ let syntastic_python_flake8_exec = '$WHICH_FLAKE8'
 \" https://github.com/vim-syntastic/syntastic#3-recommended-settings
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
+\" let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 " >> $VIMRC
 }
