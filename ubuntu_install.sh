@@ -13,6 +13,8 @@ SYSTEM_MONITORING=(htop nmon ncdu powertop cpufrequtils nmap)
 SUPPORT=(sshfs xclip)
 DEVELOPMENT=(git vim-nox tmux ccache)
 GENERAL=(lynx pidgin libgnome2-bin tree gnome-tweak-tool)
+# https://askubuntu.com/a/152369
+SETTINGS=(compizconfig-settings-manager compiz-plugins)
 
 
 function apt_get_install {
