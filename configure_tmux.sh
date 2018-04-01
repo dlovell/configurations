@@ -57,7 +57,8 @@ bind -r L resize-pane -R 5
 
 # enable clipboard interaction
 # https://unix.stackexchange.com/a/70798
-bind -t vi-copy y copy-pipe "xclip -sel clip -f | xclip -sel prim"
+# bind -t vi-copy y copy-pipe "xclip -sel clip -f | xclip -sel prim"
+bind -T copy-mode-vi y send-keys -X copy-pipe "xclip -sel clip -f | xclip -sel prim"
 bind C-p run "xclip -o -sel clip | tmux load-buffer -; tmux paste-buffer"
 bind C-P run "xclip -o -sel prim | tmux load-buffer -; tmux paste-buffer"
 EOF
