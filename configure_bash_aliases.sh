@@ -7,5 +7,8 @@ alias radio-all-off='nmcli radio all off'
 alias connection-up='nmcli connection up'
 alias device-wifi-list='nmcli device wifi list'
 alias device-wifi-connect='nmcli device wifi connect'
-alias source-activate-latest='source activate \$(conda env list | grep "^anaconda-[0-9]\{8\}" | cut -d" " -f1 | sort | tail -n 1)'
+#
+alias tmux-eclimd='tmux new-session -d -s eclimd eclimd'
+alias tmux-pasuspender='tmux new-session -d -s pasuspender pasuspender -- sleep 10000000000'
+alias source-activate-latest='source activate $(conda env list | grep "^anaconda-[0-9]\{8\}" | cut -d" " -f1 | sort | tail -n 1)'
 EOF
