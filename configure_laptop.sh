@@ -18,4 +18,5 @@ alias device-wifi-list='nmcli device wifi list'
 alias device-wifi-connect='nmcli device wifi connect'
 #
 alias tmux-pasuspender='tmux new-session -d -s pasuspender pasuspender -- sleep 10000000000'
+alias make-markov-bare-repo="bash -c 'repodir=/opt/bare_repos/\\\$1 && ssh sad \"mkdir \\\$repodir && cd \\\$repodir && git init --bare\"' --"
 EOF
