@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 
-GLOBAL_IGNORE=~/.gitignore
+GLOBAL_IGNORE=~/.gitignore-global
 
 
 # set up for me
