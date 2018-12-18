@@ -49,6 +49,7 @@ alias conda-create-latest='conda create --name anaconda-\$(date +%Y%m%d) anacond
 alias source-activate-latest='source activate \$(conda-get-latest)'
 alias conda-clone-latest='conda create --clone \$(conda-get-latest) --name'
 alias sactivate='source activate'
+alias sdeactivate='source deactivate'
 " >> $BASH_ALIASES
 }
 
