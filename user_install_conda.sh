@@ -46,8 +46,8 @@ function shell_view_md {
 	echo "
 alias conda-get-latest='conda env list | grep \"^anaconda-[0-9]\{8\}\" | cut -d\" \" -f1 | sort | tail -n 1'
 alias conda-create-latest='conda create --name anaconda-\$(date +%Y%m%d) anaconda'
-alias source-activate-latest='source activate \$(conda-get-latest)'
 alias conda-clone-latest='conda create --clone \$(conda-get-latest) --name'
+alias sactivate-latest='source activate \$(conda-get-latest)'
 alias sactivate='source activate'
 alias sdeactivate='source deactivate'
 " >> $BASH_ALIASES
