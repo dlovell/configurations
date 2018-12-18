@@ -30,6 +30,7 @@ git config --global alias.lola "log --graph --decorate --pretty=oneline --abbrev
 echo "__pycache__" >>$GLOBAL_IGNORE
 # set up bash aliases; presumes ~/.bashrc sources ~/.bash_aliases
 echo "
+# configure_git.sh
 alias g='git'
 alias gco='git checkout'
 alias gpo='git push origin'
@@ -59,7 +60,6 @@ alias gpod='gpo develop'
 alias gpom='gpo master'
 # git 'fuck it' (let's push it live)
 alias gfi='git add -A && git commit -m \"Checkpoint.\" && git push'
-
 gk() {
 	   (gitk > /dev/null 2>&1) &
    }

@@ -10,6 +10,7 @@ DOTFILES_REPO_DIR=${1:-$DOTFILES}
 git clone $DOTFILES_REPO_URL $DOTFILES_REPO_DIR
 [ $DOTFILES_REPO_DIR = $DOTFILES ] || ln -s $DOTFILES_REPO_DIR $DOTFILES
 echo "\
+# configure_stow.sh
 alias stow-dotfiles='stow --target=\$HOME --dir=$DOTFILES'
 # https://unix.stackexchange.com/a/38691
 alias find-broken-symlinks='find -maxdepth 1 -xtype l'

@@ -11,12 +11,14 @@ function sudo-usb-unbind {
 EOF
 
 cat >> ~/.bash_aliases <<EOF
+# configure_laptop.sh
 alias radio-all-on='nmcli radio all on'
 alias radio-all-off='nmcli radio all off'
 alias connection-up='nmcli connection up'
 alias device-wifi-list='nmcli device wifi list'
 alias device-wifi-connect='nmcli device wifi connect'
-#
+# save power by suspending pulse audio
 alias tmux-pasuspender='tmux new-session -d -s pasuspender pasuspender -- sleep 10000000000'
+#
 alias make-markov-bare-repo="bash -c 'repodir=/opt/bare_repos/\\\$1 && ssh sad \"mkdir \\\$repodir && cd \\\$repodir && git init --bare\"' --"
 EOF

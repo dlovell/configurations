@@ -6,10 +6,11 @@ BASH_RC=$HOME/.bashrc
 
 
 cat >> $BASH_RC <<EOF
+# configure_password_helpers.sh
 ENCRYPTED_DIR=~/.encrypted
 mkdir -p \$ENCRYPTED_DIR
 PIDGIN_FILE=\$ENCRYPTED_DIR/pidgin
-
+#
 # plain-text passwords only viewable at creation
 # https://security.google.com/settings/security/apppasswords
 OPENSSL_BASE_CMD="openssl enc -aes-128-cbc -a -salt"
