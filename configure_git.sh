@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 
 
+GLOBAL_IGNORE=~/.gitignore-global
+
+
 # set up for me
 git config --global user.email dlovell@gmail.com
 git config --global user.name dlovell
@@ -11,6 +14,7 @@ git config --global color.status auto
 git config --global color.branch auto
 git config --global color.interactive auto
 git config --global push.default simple
+git config --global core.excludesfile $GLOBAL_IGNORE
 # vim
 git config --global core.editor vim
 # vimdiff
@@ -22,6 +26,8 @@ git config --global difftool.prompt false
 git config --global alias.lol "log --graph --decorate --pretty=oneline --abbrev-commit"
 git config --global alias.lola "log --graph --decorate --pretty=oneline --abbrev-commit --all"
 
+# writing corresponding ignore
+echo "__pycache__" >>$GLOBAL_IGNORE
 # set up bash aliases; presumes ~/.bashrc sources ~/.bash_aliases
 echo "
 alias g='git'

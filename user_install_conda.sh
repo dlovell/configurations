@@ -17,6 +17,7 @@ MINICONDA_URL=http://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.
 CONDA_URL=$ANACONDA_URL
 WHICH_CONDA=$(basename $CONDA_URL)
 BASH_RC=$HOME/.bashrc
+BASH_ALIASES=$HOME/.bash_aliases
 
 
 function install_conda {
@@ -42,6 +43,13 @@ function shell_view_md {
 	man <(rst2man.py \$1)
 }
 " >> $BASH_RC
+	echo "
+alias conda-get-latest='conda env list | grep \"^anaconda-[0-9]\{8\}\" | cut -d\" \" -f1 | sort | tail -n 1'
+alias conda-create-latest='conda create --name anaconda-\$(date +%Y%m%d) anaconda'
+alias source-activate-latest='source activate \$(conda-get-latest)'
+alias conda-clone-latest='conda create --clone \$(conda-get-latest) --name'
+alias sactivate='source activate'
+" >> $BASH_ALIASES
 }
 
 

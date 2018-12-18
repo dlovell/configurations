@@ -54,6 +54,17 @@ bind -r H resize-pane -L 5
 bind -r J resize-pane -D 5
 bind -r K resize-pane -U 5
 bind -r L resize-pane -R 5
+
+# enable clipboard interaction
+# https://github.com/tmux/tmux/issues/754#issuecomment-303156000
+# https://unix.stackexchange.com/a/70798
+run-shell "tmux setenv -g TMUX_VERSION $(tmux -V | cut -c 6- | cut -d- -f1)"
+run-shell 'tmux setenv -g TMUX_VERSION_GE_24 $(echo "$TMUX_VERSION >= 2.4" | bc)'
+if-shell -b "[ $TMUX_VERSION_GE_24 = 1 ]" \
+	'bind -t vi-copy y copy-pipe "xclip -sel clip -f | xclip -sel prim"' \
+	'bind -T copy-mode-vi y send-keys -X copy-pipe "xclip -sel clip -f | xclip -sel prim"'
+bind C-p run "xclip -o -sel clip | tmux load-buffer -; tmux paste-buffer"
+bind C-P run "xclip -o -sel prim | tmux load-buffer -; tmux paste-buffer"
 EOF
 
 # make sure ~/.bashrc is loaded for tmux

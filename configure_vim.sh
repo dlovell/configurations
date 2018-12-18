@@ -58,6 +58,15 @@ function set_color_scheme {
 :color desert" >> $VIMRC
 }
 
+
+function set_backspace {
+	echo "
+\" # https://vi.stackexchange.com/a/2163
+:set backspace=indent,eol,start
+" >> $VIMRC
+}
+
+
 # # sometimes need to do this on windows box at JPMC?
 # set backspace=2
 
@@ -67,3 +76,4 @@ use_ftplugin
 use_pathogen
 mouse_controls_vim
 set_color_scheme
+set_backspace
