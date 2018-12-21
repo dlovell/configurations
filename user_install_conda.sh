@@ -17,7 +17,9 @@ MINICONDA_URL=http://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.
 CONDA_URL=$ANACONDA_URL
 WHICH_CONDA=$(basename $CONDA_URL)
 BASH_RC=$HOME/.bashrc
+BASH_RC_CONDA=${BASH_RC}_conda
 BASH_ALIASES=$HOME/.bash_aliases
+BASH_ALIASES_CONDA=${BASH_ALIASES}_conda
 
 
 function install_conda {
@@ -34,7 +36,8 @@ export PATH=\"$PREFIX/bin:\$PATH\"" >>$BASH_RC
 
 	# set up for some other stuff
 	$PREFIX/bin/conda install pandoc --yes
-	echo "
+	cat >> $BASH_RC_CONDA <<EOF
+# user_install_conda.sh
 function shell_view_rst {
 	pandoc \$1 | lynx -stdin
 }
@@ -42,15 +45,25 @@ function shell_view_rst {
 function shell_view_md {
 	man <(rst2man.py \$1)
 }
-" >> $BASH_RC
-	echo "
+EOF
+	cat >> $BASH_RC <<EOF
+# user_install_conda.sh
+source $BASH_RC_CONDA
+EOF
+
+	cat >> $BASH_ALIASES_CONDA <<EOF
+# user_install_conda.sh
 alias conda-get-latest='conda env list | grep \"^anaconda-[0-9]\{8\}\" | cut -d\" \" -f1 | sort | tail -n 1'
 alias conda-create-latest='conda create --name anaconda-\$(date +%Y%m%d) anaconda'
 alias conda-clone-latest='conda create --clone \$(conda-get-latest) --name'
 alias sactivate-latest='source activate \$(conda-get-latest)'
 alias sactivate='source activate'
 alias sdeactivate='source deactivate'
-" >> $BASH_ALIASES
+EOF
+	cat >> $BASH_ALIASES <<EOF
+# user_install_conda.sh
+source $BASH_ALIASES_CONDA
+EOF
 }
 
 
