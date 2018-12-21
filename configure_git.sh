@@ -26,10 +26,14 @@ git config --global difftool.prompt false
 git config --global alias.lol "log --graph --decorate --pretty=oneline --abbrev-commit"
 git config --global alias.lola "log --graph --decorate --pretty=oneline --abbrev-commit --all"
 
+# password cacher
+git config --global credential.helper 'cache --timeout=30'
+
 # writing corresponding ignore
 echo "__pycache__" >>$GLOBAL_IGNORE
+
 # set up bash aliases; presumes ~/.bashrc sources ~/.bash_aliases
-echo "
+echo "\
 # configure_git.sh
 alias g='git'
 alias gco='git checkout'
@@ -63,7 +67,9 @@ alias gfi='git add -A && git commit -m \"Checkpoint.\" && git push'
 gk() {
 	   (gitk > /dev/null 2>&1) &
    }
-" >> ~/.bash_aliases
+" >> ~/.bash_aliases_configure_git
 
-# password cacher
-git config --global credential.helper 'cache --timeout=30'
+echo "
+# configure_git.sh
+source ~/.bash_aliases_configure_git
+" >> ~/.bash_aliases
