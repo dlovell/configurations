@@ -6,11 +6,20 @@ DOTFILES_REPO_URL=https://github.com/dlovell/dotfiles
 DOTFILES=\$HOME/.dotfiles
 # if you use this, be careful when you switch branches: you will impact the machine you're running on
 DOTFILES_REPO_DIR=${1:-$DOTFILES}
+#
+BASH_ALISES=~/.bash_aliases
+BASH_ALISES_STOW=${BASH_ALISES}_stow
 
 git clone $DOTFILES_REPO_URL $DOTFILES_REPO_DIR
 [ $DOTFILES_REPO_DIR = $DOTFILES ] || ln -s $DOTFILES_REPO_DIR $DOTFILES
-echo "\
+
+cat >>$BASH_ALISES_STOW <<EOF
+# configure_stow.sh
 alias stow-dotfiles='stow --target=\$HOME --dir=$DOTFILES'
 # https://unix.stackexchange.com/a/38691
 alias find-broken-symlinks='find -maxdepth 1 -xtype l'
-" >> ~/.bash_aliases
+EOF
+cat >>$BASH_ALISES <<EOF
+# configure_stow.sh
+source $BASH_ALISES_STOW
+EOF

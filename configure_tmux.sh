@@ -69,6 +69,7 @@ EOF
 
 # make sure ~/.bashrc is loaded for tmux
 cat >> ~/.bash_profile <<EOF
+# configure_tmux.sh: make sure ~/.bashrc is loaded for tmux
 . ~/.bashrc
 EOF
 touch ~/.bashrc

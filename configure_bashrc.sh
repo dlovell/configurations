@@ -1,4 +1,5 @@
 cat >> ~/.bashrc <<EOF
+# configure_bashrc.sh
 stty -ixon
 function tree-less {
 	tree -C \$@ | less -R
