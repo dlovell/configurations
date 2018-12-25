@@ -49,3 +49,4 @@ apt-get dist-upgrade --yes
 apt_get_install
 customize_dconf
 nopasswd_sudoers
+update-alternatives --set editor /usr/bin/vim.nox
