@@ -60,6 +60,7 @@ alias gus='git reset HEAD'
 alias gll='git lol'
 alias gla='git lola'
 alias glp='git log -p'
+alias gwc='git whatchanged'
 alias gpod='gpo develop'
 alias gpom='gpo master'
 # git 'fuck it' (let's push it live)
