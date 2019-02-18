@@ -38,12 +38,10 @@ export PATH=\"$PREFIX/bin:\$PATH\"" >>$BASH_RC
 	$PREFIX/bin/conda install pandoc --yes
 	cat >> $BASH_RC_CONDA <<EOF
 # user_install_conda.sh
-function shell_view_rst {
+function pandoc-lynx {
+	# consider https://stackoverflow.com/a/15497603/1769715
+	# pandoc --standalone --from=markdown --to=man "$1" | man -l -
 	pandoc \$1 | lynx -stdin
-}
-
-function shell_view_md {
-	man <(rst2man.py \$1)
 }
 EOF
 	cat >> $BASH_RC <<EOF
