@@ -40,7 +40,7 @@ export PATH=\"$PREFIX/bin:\$PATH\"" >>$BASH_RC
 # user_install_conda.sh
 function pandoc-lynx {
 	# consider https://stackoverflow.com/a/15497603/1769715
-	# pandoc --standalone --from=markdown --to=man "$1" | man -l -
+	# pandoc --standalone --from=markdown --to=man "\$1" | man -l -
 	pandoc \$1 | lynx -stdin
 }
 EOF
