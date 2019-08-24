@@ -31,13 +31,6 @@ function apt_get_install {
 }
 
 
-function customize_dconf {
-    # http://askubuntu.com/a/337210
-    # set to Disabled
-    dconf write /org/compiz/integrated/show-hud '[""]'
-}
-
-
 function nopasswd_sudoers {
     # http://askubuntu.com/a/235264
     # `pkexec visudo -f /etc/sudoers.d/01_ubuntu_install`: graphical validation of password, somehow gets around malformed /etc/sudoers.d issues
@@ -49,6 +42,5 @@ function nopasswd_sudoers {
 apt-get update
 apt-get dist-upgrade --yes
 apt_get_install
-customize_dconf
 nopasswd_sudoers
 update-alternatives --set editor /usr/bin/vim.nox
