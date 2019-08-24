@@ -11,8 +11,9 @@ fi
 SERVICES=(openssh-server)
 SYSTEM_MONITORING=(htop nmon ncdu powertop cpufrequtils nmap)
 SUPPORT=(sshfs xclip)
+SYSTEMS=(gparted wget curl)
 DEVELOPMENT=(git vim-nox tmux ccache stow)
-GENERAL=(lynx pidgin libgnome2-bin tree gnome-tweak-tool pass gpg)
+GENERAL=(lynx pidgin libgnome2-bin tree gnome-tweak-tool pass gpg transmission)
 # https://askubuntu.com/a/152369
 SETTINGS=(compizconfig-settings-manager compiz-plugins)
 
@@ -23,6 +24,7 @@ function apt_get_install {
         ${SERVICES[*]} \
         ${SYSTEM_MONITORING[*]} \
         ${SUPPORT[*]} \
+        ${SYSTEMS[*]} \
         ${DEVELOPMENT[*]} \
         ${GENERAL[*]} \
 
