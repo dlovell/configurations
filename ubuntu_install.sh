@@ -11,7 +11,7 @@ fi
 SERVICES=(openssh-server)
 SYSTEM_MONITORING=(htop nmon ncdu powertop cpufrequtils nmap)
 SUPPORT=(sshfs xclip)
-SYSTEMS=(gparted wget curl)
+SYSTEMS=(gparted wget curl libgnome2-bin)
 DEVELOPMENT=(git vim-nox tmux ccache stow)
 GENERAL=(lynx pidgin libgnome2-bin tree gnome-tweak-tool pass gpg transmission)
 # https://askubuntu.com/a/152369
