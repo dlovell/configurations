@@ -5,8 +5,8 @@ GLOBAL_IGNORE=~/.gitignore-global
 
 
 # set up for me
-git config --global user.email dlovell@gmail.com
-git config --global user.name dlovell
+# git config --global user.email dlovell@gmail.com
+# git config --global user.name dlovell
 
 # customize
 git config --global color.diff auto
