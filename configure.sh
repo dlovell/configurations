@@ -13,14 +13,14 @@ project_location=$(dirname $my_abs_path)
 cd $project_location
 
 
+bash centos_install.sh
 bash user_install_conda.sh
-bash configure_bash_aliases.sh
-bash configure_bashrc.sh
+bash build_tmux_centos7.sh
 bash configure_git.sh
 bash configure_tmux.sh
 bash configure_vim.sh
 bash configure_vim_for_python.sh
 bash configure_vim_for_vim_slime.sh
 # bash configure_vim_for_syntastic.sh
-bash configure_vim_for_ale.sh
+# bash configure_vim_for_ale.sh
 bash configure_vim_for_tagbar.sh
